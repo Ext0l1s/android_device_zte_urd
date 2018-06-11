@@ -212,10 +212,6 @@ PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     librmnetctl
 
-# Thermal
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
-
 # Wifi
 PRODUCT_PACKAGES += \
     libqsap_sdk \
