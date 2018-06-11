@@ -218,8 +218,8 @@ PRODUCT_PACKAGES += \
     libtinyxml
 
 # Recovery
-PRODUCT_PACKAGES += \
-    librecovery_updater_urd
+#PRODUCT_PACKAGES += \
+#    librecovery_updater_urd
 
 # RIL
 PRODUCT_PACKAGES += \
