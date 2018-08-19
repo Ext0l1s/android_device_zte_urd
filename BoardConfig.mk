@@ -48,7 +48,8 @@ TARGET_NO_BOOTLOADER := true
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk ramoops.mem_address=0x9fd00000 ramoops.mem_size=0x200000 ramoops.console_size=0x100000 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk ramoops.mem_address=0x9fd00000 ramoops.mem_size=0x200000 ramoops.console_size=0x100000
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET := 0x01000000
@@ -68,6 +69,8 @@ AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
+DOLBY_DDP := true
+DS1_DOLBY_DAP := true
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
@@ -107,15 +110,14 @@ TARGET_USERIMAGES_USE_F2FS := true
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
+# Keylayout
+PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/qwerty.kl:system/usr/keylayout/qwerty.kl, $(PRODUCT_COPY_FILES))
+
 # Keymaster
 TARGET_PROVIDES_KEYMASTER := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
-
-# NFC
-# XXX?
-BOARD_NFC_CHIPSET := pn548
 
 # Power
 TARGET_POWERHAL_VARIANT := qcom
@@ -139,8 +141,8 @@ TW_INCLUDE_CRYPTO := true
 endif
 
 # Releasetools
-#TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_urd
-#TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
+# TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_jasmine
+# TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 
 # RIL
 TARGET_RIL_VARIANT := caf
@@ -167,6 +169,9 @@ WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/wlan.ko"
 WIFI_DRIVER_MODULE_NAME     := "wlan"
 
 TARGET_OTA_ASSERT_DEVICE := urd
+
+# FM radio
+BOARD_HAVE_QCOM_FM := true
 
 # Filesystem
 BOARD_BOOTIMAGE_PARTITION_SIZE := 50331648
