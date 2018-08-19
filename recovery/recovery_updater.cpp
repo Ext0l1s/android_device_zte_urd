@@ -194,6 +194,6 @@ Value * VerifyTrustZoneFn(const char *name, State *state, int argc, Expr *argv[]
     return StringValue(strdup(ret ? "1" : "0"));
 }
 
-void Register_librecovery_updater_tulip() {
-    RegisterFunction("tulip.verify_trustzone", VerifyTrustZoneFn);
+void Register_librecovery_updater_jasmine() {
+    RegisterFunction("jasmine.verify_trustzone", VerifyTrustZoneFn);
 }
