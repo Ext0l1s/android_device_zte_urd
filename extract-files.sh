@@ -17,7 +17,7 @@
 
 set -e
 
-DEVICE=urd
+DEVICE=urd-test
 VENDOR=zte
 
 # Load extractutils and do some sanity checks
