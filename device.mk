@@ -34,6 +34,7 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui
 
 # Permissions
 PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
@@ -76,8 +77,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/configs/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/ds1-default.xml:system/vendor/etc/dolby/ds1-default.xml \
-    $(LOCAL_PATH)/configs/media_codecs_dolby.xml:system/etc/media_codecs_dolby.xml \
     $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/configs/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
     $(LOCAL_PATH)/configs/sound_trigger_mixer_paths_wcd9330.xml:system/etc/sound_trigger_mixer_paths_wcd9330.xml \
@@ -95,7 +94,12 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    camera.msm8952 \
     Snap
+
+# Charger
+PRODUCT_PACKAGES += \
+charger_res_images
 
 # Display
 PRODUCT_PACKAGES += \
@@ -118,6 +122,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/izat.conf:system/etc/izat.conf \
     $(LOCAL_PATH)/configs/sap.conf:system/etc/sap.conf \
     $(LOCAL_PATH)/configs/xtwifi.conf:system/etc/xtwifi.conf
+
+# IMS
+PRODUCT_PACKAGES += \
+    libshims_ims
 
 # Init
 PRODUCT_PACKAGES += \
@@ -169,6 +177,7 @@ PRODUCT_COPY_FILES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    libmm-omxcore \
     libc2dcolorconvert \
     libOmxAacEnc \
     libOmxAmrEnc \
