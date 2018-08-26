@@ -69,8 +69,6 @@ AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
-DOLBY_DDP := true
-DS1_DOLBY_DAP := true
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
@@ -117,6 +115,7 @@ PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/qwerty.kl:syst
 TARGET_PROVIDES_KEYMASTER := true
 
 # Lights
+BOARD_LIGHTS_VARIANT := aw2013
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Power
